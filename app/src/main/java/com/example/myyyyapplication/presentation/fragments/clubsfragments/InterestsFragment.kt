@@ -5,13 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+
 import com.example.myyyyapplication.R
 import com.example.myyyyapplication.databinding.FragmentInterestsBinding
+import com.example.myyyyapplication.presentation.viewmodel.InterestsViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class InterestsFragment : Fragment() {
 
     private var _binding: FragmentInterestsBinding? = null
     private val binding get() = _binding!!
+
+    private val vm: InterestsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,7 +24,6 @@ class InterestsFragment : Fragment() {
     ): View? {
         _binding = FragmentInterestsBinding.inflate(inflater, container, false)
         val view = binding.root
-
         val expandButtons = listOf(
             binding.expandButton,
             binding.expandButton2,
@@ -53,8 +57,14 @@ class InterestsFragment : Fragment() {
                 }
             }
         }
-
+        subscribeToWorkshops()
         return view
+    }
+
+    private fun subscribeToWorkshops() {
+        vm.workshopsLiveData.observe(viewLifecycleOwner) {
+            // todo populate UI
+        }
     }
 
     override fun onDestroyView() {
