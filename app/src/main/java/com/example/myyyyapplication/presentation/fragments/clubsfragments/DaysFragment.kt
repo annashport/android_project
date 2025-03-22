@@ -1,45 +1,35 @@
-package com.example.myyyyapplication.clubsfragments
+package com.example.myyyyapplication.presentation.fragments.clubsfragments
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.myyyyapplication.R
-import com.example.myyyyapplication.databinding.FragmentInterestsBinding
+import com.example.myyyyapplication.databinding.FragmentDaysBinding
 
-class Interests : Fragment() {
 
-    private var _binding: FragmentInterestsBinding? = null
+class DaysFragment : Fragment() {
+
+    private var _binding: FragmentDaysBinding? = null
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentInterestsBinding.inflate(inflater, container, false)
+        _binding = FragmentDaysBinding.inflate(inflater, container, false)
         val view = binding.root
 
         val expandButtons = listOf(
             binding.expandButton,
             binding.expandButton2,
-            binding.expandButton3,
-            binding.expandButton4,
-            binding.expandButton5,
-            binding.expandButton6,
-            binding.expandButton7,
-            binding.expandButton8
+            binding.expandButton3
         )
 
         val infoLayouts = listOf(
             binding.infoLayout,
             binding.infoLayout2,
-            binding.infoLayout3,
-            binding.infoLayout4,
-            binding.infoLayout5,
-            binding.infoLayout6,
-            binding.infoLayout7,
-            binding.infoLayout8
+            binding.infoLayout3
         )
 
         for (i in expandButtons.indices) {
@@ -55,10 +45,13 @@ class Interests : Fragment() {
         }
 
         return view
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

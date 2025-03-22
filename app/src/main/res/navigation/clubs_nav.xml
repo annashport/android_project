@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/pageClubs"
-        android:name="com.example.myyyyapplication.clubsfragments.PageClubs"
+        android:name="com.example.myyyyapplication.presentation.fragments.clubsfragments.PageClubsFragment"
         android:label="fragment_page_clubs"
         tools:layout="@layout/fragment_page_clubs" >
         <action
@@ -25,22 +25,22 @@
     </fragment>
     <fragment
         android:id="@+id/interests"
-        android:name="com.example.myyyyapplication.clubsfragments.Interests"
+        android:name="com.example.myyyyapplication.presentation.fragments.clubsfragments.InterestsFragment"
         android:label="fragment_interests"
         tools:layout="@layout/fragment_interests" />
     <fragment
         android:id="@+id/prices"
-        android:name="com.example.myyyyapplication.clubsfragments.Prices"
+        android:name="com.example.myyyyapplication.presentation.fragments.clubsfragments.PricesFragment"
         android:label="fragment_prices"
         tools:layout="@layout/fragment_prices" />
     <fragment
         android:id="@+id/days"
-        android:name="com.example.myyyyapplication.clubsfragments.Days"
+        android:name="com.example.myyyyapplication.presentation.fragments.clubsfragments.DaysFragment"
         android:label="fragment_days"
         tools:layout="@layout/fragment_days" />
     <fragment
         android:id="@+id/hours"
-        android:name="com.example.myyyyapplication.clubsfragments.Hours"
+        android:name="com.example.myyyyapplication.presentation.fragments.clubsfragments.HoursFragment"
         android:label="fragment_hours"
         tools:layout="@layout/fragment_hours" />
 </navigation>

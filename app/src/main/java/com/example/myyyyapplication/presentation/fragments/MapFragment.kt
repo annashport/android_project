@@ -1,10 +1,11 @@
-package com.example.myyyyapplication
+package com.example.myyyyapplication.presentation.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myyyyapplication.R
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -13,7 +14,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-class Map : Fragment(), OnMapReadyCallback  {
+class MapFragment : Fragment(), OnMapReadyCallback  {
 
     private lateinit var mMap: GoogleMap
     private lateinit var mapView: MapView

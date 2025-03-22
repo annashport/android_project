@@ -1,4 +1,4 @@
-package com.example.myyyyapplication.clubsfragments
+package com.example.myyyyapplication.presentation.fragments.clubsfragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,18 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myyyyapplication.R
-import com.example.myyyyapplication.databinding.FragmentDaysBinding
+import com.example.myyyyapplication.databinding.FragmentHoursBinding
 
 
-class Days : Fragment() {
+class HoursFragment : Fragment() {
 
-    private var _binding: FragmentDaysBinding? = null
+    private var _binding: FragmentHoursBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentDaysBinding.inflate(inflater, container, false)
+        _binding = FragmentHoursBinding.inflate(inflater, container, false)
         val view = binding.root
 
         val expandButtons = listOf(
@@ -52,6 +53,5 @@ class Days : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 
 }

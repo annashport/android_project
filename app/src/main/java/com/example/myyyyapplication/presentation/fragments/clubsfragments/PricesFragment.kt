@@ -1,4 +1,4 @@
-package com.example.myyyyapplication.clubsfragments
+package com.example.myyyyapplication.presentation.fragments.clubsfragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import com.example.myyyyapplication.R
 import com.example.myyyyapplication.databinding.FragmentPricesBinding
 
 
-class Prices : Fragment() {
+class PricesFragment : Fragment() {
 
     private var _binding: FragmentPricesBinding? = null
     private val binding get() = _binding!!
