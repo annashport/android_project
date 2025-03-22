@@ -1,56 +1,64 @@
 package com.example.myyyyapplication.clubsfragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.lifecycleScope
-import com.example.myyyyapplication.DatabaseInitializer
-import com.example.myyyyapplication.MyDatabase
+import androidx.fragment.app.Fragment
 import com.example.myyyyapplication.R
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-
+import com.example.myyyyapplication.databinding.FragmentInterestsBinding
 
 class Interests : Fragment() {
+
+    private var _binding: FragmentInterestsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_interests, container, false)
+        _binding = FragmentInterestsBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        DatabaseInitializer.populateDatabase(requireContext(), viewLifecycleOwner, "Клуб 1")
+        val expandButtons = listOf(
+            binding.expandButton,
+            binding.expandButton2,
+            binding.expandButton3,
+            binding.expandButton4,
+            binding.expandButton5,
+            binding.expandButton6,
+            binding.expandButton7,
+            binding.expandButton8
+        )
 
-        val clubNameTextView = view.findViewById<TextView>(R.id.clubNameTextView)
-        val clubAddressTextView = view.findViewById<TextView>(R.id.clubAddressTextView)
-        val clubPhoneTextView = view.findViewById<TextView>(R.id.clubPhoneTextView)
-        val clubWebsiteTextView = view.findViewById<TextView>(R.id.clubWebsiteTextView)
+        val infoLayouts = listOf(
+            binding.infoLayout,
+            binding.infoLayout2,
+            binding.infoLayout3,
+            binding.infoLayout4,
+            binding.infoLayout5,
+            binding.infoLayout6,
+            binding.infoLayout7,
+            binding.infoLayout8
+        )
 
-        val database = MyDatabase.getDatabase(requireContext())
-
-        lifecycleScope.launch {
-            delay(1000) // Додайте затримку
-            val club = database.myDao().getClubByName("Клуб 1") // Замініть "Клуб 1" на назву гуртка, який ви хочете відобразити
-
-            if (club != null) {
-                Log.d("Interests", "Club found: ${club.name}")
-                clubNameTextView.text = club.name
-                clubAddressTextView.text = club.address
-                clubPhoneTextView.text = club.phone
-                clubWebsiteTextView.text = club.website
-            } else {
-                Log.d("Interests", "Club not found")
+        for (i in expandButtons.indices) {
+            expandButtons[i].setOnClickListener {
+                if (infoLayouts[i].visibility == View.GONE) {
+                    infoLayouts[i].visibility = View.VISIBLE
+                    expandButtons[i].setImageResource(R.drawable.arrow_up_24)
+                } else {
+                    infoLayouts[i].visibility = View.GONE
+                    expandButtons[i].setImageResource(R.drawable.arrow_down_24)
+                }
             }
         }
 
         return view
-
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

@@ -12,5 +12,5 @@ data class MyEntity(
     val interests: String,
     val days: String,
     val hours: String,
-    val price: Double
+    val price: String
 )

@@ -11,6 +11,7 @@ interface MyDao {
     @Query("SELECT * FROM my_table")
     suspend fun getAll(): List<MyEntity>
 
-    @Query("SELECT * FROM my_table WHERE name = :clubName")
-    suspend fun getClubByName(clubName: String): MyEntity?
+
+    @Query("SELECT * FROM my_table WHERE interests = :clubInterests")
+    suspend fun getClubByInterests(clubInterests: String): MyEntity?
 }
