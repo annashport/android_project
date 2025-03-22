@@ -30,6 +30,7 @@ class WorkshopRepositoryImpl(
             }
     }
 
+    //call before each database request
     private suspend fun checkDBandLoad() {
         if (workshopDatabase.isEmpty()) {
            workshopDatabase.insertAll(

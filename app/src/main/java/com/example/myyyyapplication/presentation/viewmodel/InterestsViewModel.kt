@@ -12,12 +12,12 @@ import kotlinx.coroutines.launch
 
 class InterestsViewModel(private val workshopRepository: WorkshopRepository): ViewModel() {
 
-    private val _workshopsLiveData: MutableLiveData<List<WorkshopModel>> = MutableLiveData()
-    val workshopsLiveData: LiveData<List<WorkshopModel>> = _workshopsLiveData
+    private val _workshopsLiveData: MutableLiveData<Map<String, List<WorkshopModel>>> = MutableLiveData()
+    val workshopsLiveData: LiveData<Map<String, List<WorkshopModel>>> = _workshopsLiveData
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            _workshopsLiveData.postValue(workshopRepository.getWorkshops())
+            _workshopsLiveData.postValue(workshopRepository.getWorkshops().groupBy { it.interests })
         }
     }
 

@@ -8,6 +8,5 @@ data class WorkshopModel(
     val interests: String,
     val days: String,
     val hours: String,
-    val price: String
+    val price: String,
 )
-// todo add type
