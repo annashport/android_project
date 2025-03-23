@@ -11,16 +11,20 @@ import androidx.fragment.app.Fragment
 
 import com.example.myyyyapplication.R
 import com.example.myyyyapplication.databinding.FragmentInterestsBinding
-import com.example.myyyyapplication.presentation.viewmodel.InterestsViewModel
+import com.example.myyyyapplication.presentation.viewmodel.GroupedClubsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.core.view.isGone
+import com.example.myyyyapplication.presentation.GroupType
+import org.koin.core.parameter.parametersOf
 
-class InterestsFragment : Fragment() {
+class GroupedClubsFragment : Fragment() {
 
     private var _binding: FragmentInterestsBinding? = null
     private val binding get() = _binding!!
 
-    private val vm: InterestsViewModel by viewModel()
+    private val vm: GroupedClubsViewModel by viewModel {
+        parametersOf(requireArguments().getSerializable(GROUP_BY_TYPE) as GroupType)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,5 +79,9 @@ class InterestsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val GROUP_BY_TYPE = "GROUP_BY_TYPE"
     }
 }

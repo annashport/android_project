@@ -6,11 +6,11 @@ import com.example.myyyyapplication.data.repository.WorkshopRepositoryImpl
 import com.example.myyyyapplication.data.source.local.WorkshopDatabase
 import com.example.myyyyapplication.data.source.remote.WorkshopMockDataSourceImpl
 import com.example.myyyyapplication.data.source.remote.WorkshopRemoteDataSource
-import com.example.myyyyapplication.presentation.viewmodel.InterestsViewModel
+import com.example.myyyyapplication.presentation.GroupType
+import com.example.myyyyapplication.presentation.viewmodel.GroupedClubsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
@@ -38,6 +38,6 @@ class MyApplication: Application() {
         single { WorkshopDatabase.getDatabase(this@MyApplication).myDao() }
         factory<WorkshopRemoteDataSource> { WorkshopMockDataSourceImpl() }
         factory<WorkshopRepository> { WorkshopRepositoryImpl(get(), get()) }
-        viewModel { InterestsViewModel(get()) }
+        viewModel { params -> GroupedClubsViewModel(params.get(), get()) }
     }
 }

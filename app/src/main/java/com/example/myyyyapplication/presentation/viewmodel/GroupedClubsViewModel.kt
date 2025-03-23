@@ -6,18 +6,32 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myyyyapplication.data.repository.WorkshopRepository
 import com.example.myyyyapplication.data.source.remote.model.WorkshopModel
+import com.example.myyyyapplication.presentation.GroupType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class InterestsViewModel(private val workshopRepository: WorkshopRepository): ViewModel() {
+class GroupedClubsViewModel(
+    val groupType: GroupType,
+    private val workshopRepository: WorkshopRepository,
+): ViewModel() {
 
     private val _workshopsLiveData: MutableLiveData<Map<String, List<WorkshopModel>>> = MutableLiveData()
     val workshopsLiveData: LiveData<Map<String, List<WorkshopModel>>> = _workshopsLiveData
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            _workshopsLiveData.postValue(workshopRepository.getWorkshops().groupBy { it.interests })
+            _workshopsLiveData.postValue(
+                workshopRepository.getWorkshops()
+                    .groupBy {
+                        when(groupType) {
+                            GroupType.Days -> it.days
+                            GroupType.Hours -> it.hours
+                            GroupType.Interests -> it.interests
+                            GroupType.Prices -> it.price
+                        }
+                    }
+            )
         }
     }
 

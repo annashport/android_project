@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FEFFE0"
-    tools:context=".presentation.fragments.clubsfragments.InterestsFragment">
+    tools:context=".presentation.fragments.clubsfragments.GroupedClubsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
