@@ -1,4 +1,4 @@
-package com.example.myyyyapplication.clubsfragments
+package com.example.myyyyapplication.presentation.fragments.clubsfragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.myyyyapplication.R
+import com.example.myyyyapplication.presentation.GroupType
+import com.example.myyyyapplication.presentation.fragments.clubsfragments.GroupedClubsFragment.Companion.GROUP_BY_TYPE
 
 
-class PageClubs : Fragment() {
+class PageClubsFragment : Fragment() {
 
 
 
@@ -30,10 +32,10 @@ class PageClubs : Fragment() {
         val bDays = view.findViewById<Button>(R.id.button_days)
         val bHours = view.findViewById<Button>(R.id.button_hours)
         val controller = findNavController()
-        bInterests.setOnClickListener { controller.navigate(R.id.interests) }
-        bPrices.setOnClickListener { controller.navigate(R.id.prices) }
-        bDays.setOnClickListener { controller.navigate(R.id.days) }
-        bHours.setOnClickListener { controller.navigate(R.id.hours) }
+        bInterests.setOnClickListener { controller.navigate(R.id.interests, bundleOf(GROUP_BY_TYPE to GroupType.Interests)) }
+        bPrices.setOnClickListener { controller.navigate(R.id.interests, bundleOf(GROUP_BY_TYPE to GroupType.Prices)) }
+        bDays.setOnClickListener { controller.navigate(R.id.interests, bundleOf(GROUP_BY_TYPE to GroupType.Days)) }
+        bHours.setOnClickListener { controller.navigate(R.id.interests, bundleOf(GROUP_BY_TYPE to GroupType.Hours)) }
 
 
 }

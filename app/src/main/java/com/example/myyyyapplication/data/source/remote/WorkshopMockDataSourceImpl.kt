@@ -1,17 +1,12 @@
-package com.example.myyyyapplication
-import android.content.Context
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
+package com.example.myyyyapplication.data.source.remote
 
-object DatabaseInitializer {
+import com.example.myyyyapplication.data.source.remote.model.WorkshopModel
 
-    fun populateDatabase(context: Context, lifecycleOwner: LifecycleOwner,  clubInterests: String) {
-        val database = MyDatabase.getDatabase(context)
+class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
 
-        val myEntities = listOf(
-
-            MyEntity(
+    override suspend fun loadWorkshops(): List<WorkshopModel> {
+        return listOf(
+            WorkshopModel(
                 name = "Майстерня Novikova Paint&Craft",
                 address = "м. Вінниця, вул. Хлібна 14",
                 phone = "(073) 419 32 22",
@@ -21,7 +16,7 @@ object DatabaseInitializer {
                 hours = "9:00-17:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Центр розвитку дитини «Бджілка»",
                 address = "м. Вінниця, вул. Ватутіна, 27",
                 phone = "(063) 286 82 82, (068) 644 00 44",
@@ -31,7 +26,7 @@ object DatabaseInitializer {
                 hours = "9:00-18:00",
                 price = "До 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Дитячий центр “BeFirst.Kids”",
                 address = "м. Вінниця, вул. Марії Литвиненко-Вольгемут, 26",
                 phone = "(067) 702-6045, (093) 093-9141",
@@ -41,7 +36,7 @@ object DatabaseInitializer {
                 hours = "9:00-18:00",
                 price = "До 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Курси акторської майстерності “Червоний Крокодил“",
                 address = "м. Вінниця, вул. Миколи Оводова, 22",
                 phone = "+38 (067) 184 60 53",
@@ -51,7 +46,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Вінницька дитяча музична школа №1",
                 address = "м. Вінниця, вул. Архітектора Артинова, 21",
                 phone = "(0432) 562-830",
@@ -61,7 +56,7 @@ object DatabaseInitializer {
                 hours = "9:00-17:00",
                 price = "До 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Вінницька дитяча музична школа №2",
                 address = "м. Вінниця, вул. Червоноармійська, 16",
                 phone = "(0432) 261-456, (0432) 261-637",
@@ -71,7 +66,7 @@ object DatabaseInitializer {
                 hours = "9:00-17:00",
                 price = "До 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Artinov Studio, приватна музична школа",
                 address = "м. Вінниця, вул. Василя Стуса 26",
                 phone = "+38 097 776 00 68",
@@ -81,7 +76,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Вінницька дитяча школа мистецтв",
                 address = "м. Вінниця, вул. Островського, 85",
                 phone = "(0432) 275-095",
@@ -91,7 +86,7 @@ object DatabaseInitializer {
                 hours = "9:00-17:00",
                 price = "До 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Школа програмування для дітей “ROBOCODE”",
                 address = "м. Вінниця, вулиця Академіка Ющенко, 6",
                 phone = "(093) 170-6445",
@@ -101,7 +96,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Школа “Гарант”",
                 address = "м. Вінниця, вул. Київська, 134",
                 phone = "(067) 440-5546, (093) 884-7201",
@@ -111,7 +106,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Комп’ютерна академія “ITSTEP”",
                 address = "м. Вінниця, пл. Гагаріна, 2",
                 phone = "(067) 522-1255, (073) 797-8831",
@@ -121,7 +116,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Бізнес-школа для дітей “Rainbow”",
                 address = "м. Вінниця, вул. Пирогова 52а",
                 phone = "(067) 631-4351",
@@ -131,7 +126,7 @@ object DatabaseInitializer {
                 hours = "9:00-18:00",
                 price = "До 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Танцювальна студія “Альфа-Денс”",
                 address = "м. Вінниця, вул. 600-річчя, 66-Б",
                 phone = "(096) 035-16-68",
@@ -141,7 +136,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Спорткомплекс “Аква-Він“",
                 address = "вул. Академіка Янгеля, 48",
                 phone = "(097) 936-8427",
@@ -151,7 +146,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "SOUL DANCE CENTRE",
                 address = "м. Вінниця, вул. Соборна, 8",
                 phone = "(063) 695-0664",
@@ -161,7 +156,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "СДЮСШ з легкої атлетики",
                 address = "м. Вінниця, вул. Генерала Арабея, 3",
                 phone = "(043) 235-4245",
@@ -171,7 +166,7 @@ object DatabaseInitializer {
                 hours = "9:00-18:00",
                 price = "Безкоштовні"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "ВІННИЦЬКА ОБЛАСНА ФЕДЕРАЦІЯ ВЕСЛУВАННЯ НА БАЙДАРКАХ І КАНОЕ",
                 address = "м. Вінниця вул. Князів Коріатовичів, 123",
                 phone = "(097) 870-0600",
@@ -181,7 +176,7 @@ object DatabaseInitializer {
                 hours = "9:00-18:00",
                 price = "Безкоштовні"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "СДЮСШ з баскетболу",
                 address = "м. Вінниця, вул. Пирогова, 4",
                 phone = "(067) 431-6546",
@@ -191,7 +186,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Безкоштовні"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "СДЮСШ з акробатики",
                 address = "вул. Червонохрестівська, 11",
                 phone = "(043) 269-7968",
@@ -201,7 +196,7 @@ object DatabaseInitializer {
                 hours = "9:00-19:00",
                 price = "Безкоштовні"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Центр Іноземних Мов ASAP",
                 address = "м. Вінниця, вул. Ак. Ющенка, 6",
                 phone = "(096) 390-0090",
@@ -211,7 +206,7 @@ object DatabaseInitializer {
                 hours = "9:00-18:00",
                 price = "Більше 100 грн/год"
             ),
-            MyEntity(
+            WorkshopModel(
                 name = "Школа “WizarD”",
                 address = "м. Вінниця, пр. Юності, 61",
                 phone = "(097) 077-4303",
@@ -221,13 +216,6 @@ object DatabaseInitializer {
                 hours = "9:00-18:00",
                 price = "Більше 100 грн/год"
             ),
-
-
-            )
-        lifecycleOwner.lifecycleScope.launch {
-            myEntities.forEach { entity ->
-                database.myDao().insert(entity)
-            }
-        }
+        )
     }
 }

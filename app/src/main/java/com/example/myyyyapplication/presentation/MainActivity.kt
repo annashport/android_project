@@ -1,15 +1,16 @@
-package com.example.myyyyapplication
+package com.example.myyyyapplication.presentation
 
 import android.os.Bundle
-import android.view.View
-import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.myyyyapplication.R
 import com.example.myyyyapplication.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.myyyyapplication.presentation.fragments.ClubsFragment
+import com.example.myyyyapplication.presentation.fragments.MapFragment
+import com.example.myyyyapplication.presentation.fragments.PlanFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,12 +21,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(Clubs())
+        replaceFragment(ClubsFragment())
         binding.bottomNavigationView.setOnItemSelectedListener{
             when(it.itemId){
-                R.id.clubs -> replaceFragment(Clubs())
-                R.id.map -> replaceFragment(Map())
-                R.id.plan -> replaceFragment(Plan())
+                R.id.clubs -> replaceFragment(ClubsFragment())
+                R.id.map -> replaceFragment(MapFragment())
+                R.id.plan -> replaceFragment(PlanFragment())
 
                 else -> {
 
