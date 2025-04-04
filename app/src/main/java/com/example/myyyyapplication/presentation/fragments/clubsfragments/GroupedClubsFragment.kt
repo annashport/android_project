@@ -1,5 +1,4 @@
 package com.example.myyyyapplication.presentation.fragments.clubsfragments
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-
 import com.example.myyyyapplication.R
 import com.example.myyyyapplication.databinding.FragmentInterestsBinding
 import com.example.myyyyapplication.presentation.viewmodel.GroupedClubsViewModel
@@ -76,6 +74,7 @@ class GroupedClubsFragment : Fragment() {
         }
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -84,4 +83,5 @@ class GroupedClubsFragment : Fragment() {
     companion object {
         const val GROUP_BY_TYPE = "GROUP_BY_TYPE"
     }
+
 }

@@ -39,7 +39,6 @@
             android:layout_marginRight="2dp"
             android:src="@drawable/favorite_foreground"
             app:layout_constraintBottom_toBottomOf="@+id/clubNameTextView8"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

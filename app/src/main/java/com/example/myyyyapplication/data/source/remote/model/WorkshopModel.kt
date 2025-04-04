@@ -9,4 +9,6 @@ data class WorkshopModel(
     val days: String,
     val hours: String,
     val price: String,
+    val longitude: Double,
+    val latitude: Double,
 )

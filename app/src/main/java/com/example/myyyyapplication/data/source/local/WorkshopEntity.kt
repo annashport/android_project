@@ -12,5 +12,7 @@ data class WorkshopEntity(
     val interests: String,
     val days: String,
     val hours: String,
-    val price: String
+    val price: String,
+    val longitude: Double, // Додаємо поле довготи
+    val latitude: Double
 )

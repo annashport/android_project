@@ -21,4 +21,5 @@ interface WorkshopDao {
 
     @Query("SELECT * FROM my_table WHERE interests = :clubInterests")
     suspend fun getClubByInterests(clubInterests: String): WorkshopEntity?
+
 }

@@ -14,7 +14,10 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Малювання",
                 days = "Сб-Нд",
                 hours = "9:00-17:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.46022603367229,
+                latitude = 49.23368828782602
+
             ),
             WorkshopModel(
                 name = "Центр розвитку дитини «Бджілка»",
@@ -24,7 +27,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Рукоділля",
                 days = "Пн-Нд",
                 hours = "9:00-18:00",
-                price = "До 100 грн/год"
+                price = "До 100 грн/год",
+                longitude = 28.534603598090545,
+                latitude = 49.24547054738144
             ),
             WorkshopModel(
                 name = "Дитячий центр “BeFirst.Kids”",
@@ -34,7 +39,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Театральні гуртки",
                 days = "Пн-Нд",
                 hours = "9:00-18:00",
-                price = "До 100 грн/год"
+                price = "До 100 грн/год",
+                longitude = 28.45011871158231,
+                latitude = 49.226701299307344
             ),
             WorkshopModel(
                 name = "Курси акторської майстерності “Червоний Крокодил“",
@@ -44,7 +51,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Театральні гуртки",
                 days = "Пн-Пт",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.46878186925433,
+                latitude = 49.23406534814523
             ),
             WorkshopModel(
                 name = "Вінницька дитяча музична школа №1",
@@ -54,7 +63,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Музика, вокал",
                 days = "Пн-Пт",
                 hours = "9:00-17:00",
-                price = "До 100 грн/год"
+                price = "До 100 грн/год",
+                longitude = 28.466537698090193,
+                latitude = 49.234427990744194
             ),
             WorkshopModel(
                 name = "Вінницька дитяча музична школа №2",
@@ -64,7 +75,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Музика, вокал",
                 days = "Пн-Пт",
                 hours = "9:00-17:00",
-                price = "До 100 грн/год"
+                price = "До 100 грн/год",
+                longitude = 28.486810098090743,
+                latitude = 49.24682822502492
             ),
             WorkshopModel(
                 name = "Artinov Studio, приватна музична школа",
@@ -74,7 +87,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Музика, вокал",
                 days = "Пн-Нд",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.457395598090013,
+                latitude = 49.22861702404529
             ),
             WorkshopModel(
                 name = "Вінницька дитяча школа мистецтв",
@@ -84,7 +99,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Музика, вокал",
                 days = "Пн-Пт",
                 hours = "9:00-17:00",
-                price = "До 100 грн/год"
+                price = "До 100 грн/год",
+                longitude = 28.491826226926126,
+                latitude = 49.23295157177888
             ),
             WorkshopModel(
                 name = "Школа програмування для дітей “ROBOCODE”",
@@ -94,7 +111,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Технічні гуртки",
                 days = "Пн-Нд",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.443050682746133,
+                latitude = 49.2204667925482
             ),
             WorkshopModel(
                 name = "Школа “Гарант”",
@@ -104,7 +123,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Технічні гуртки",
                 days = "Пн-Нд",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.47401231343488,
+                latitude = 49.26363910643602
             ),
             WorkshopModel(
                 name = "Комп’ютерна академія “ITSTEP”",
@@ -114,7 +135,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Технічні гуртки",
                 days = "Пн-Нд",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.455978769254354,
+                latitude = 49.233235176881955
             ),
             WorkshopModel(
                 name = "Бізнес-школа для дітей “Rainbow”",
@@ -124,7 +147,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Саморозвиток",
                 days = "Сб-Нд",
                 hours = "9:00-18:00",
-                price = "До 100 грн/год"
+                price = "До 100 грн/год",
+                longitude = 28.449325384597692,
+                latitude = 49.228176653770475
             ),
             WorkshopModel(
                 name = "Танцювальна студія “Альфа-Денс”",
@@ -134,7 +159,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Спортивні секції",
                 days = "Пн-Нд",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.423809453910312,
+                latitude = 49.22257249532725
             ),
             WorkshopModel(
                 name = "Спорткомплекс “Аква-Він“",
@@ -144,7 +171,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Спортивні секції",
                 days = "Пн-Нд",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.485370369254774,
+                latitude = 49.24452615795192
             ),
             WorkshopModel(
                 name = "SOUL DANCE CENTRE",
@@ -154,7 +183,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Спортивні секції",
                 days = "Пн-Нд",
                 hours = "9:00-19:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.474554011582597,
+                latitude = 49.23366670997444
             ),
             WorkshopModel(
                 name = "СДЮСШ з легкої атлетики",
@@ -164,7 +195,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Спортивні секції",
                 days = "Пн-Пт",
                 hours = "9:00-18:00",
-                price = "Безкоштовні"
+                price = "Безкоштовні",
+                longitude = 28.439248153911045,
+                latitude = 49.239684075835456
             ),
             WorkshopModel(
                 name = "ВІННИЦЬКА ОБЛАСНА ФЕДЕРАЦІЯ ВЕСЛУВАННЯ НА БАЙДАРКАХ І КАНОЕ",
@@ -174,7 +207,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Спортивні секції",
                 days = "Пн-Нд",
                 hours = "9:00-18:00",
-                price = "Безкоштовні"
+                price = "Безкоштовні",
+                longitude = 28.4629392557617,
+                latitude = 49.22581524238848
             ),
             WorkshopModel(
                 name = "СДЮСШ з баскетболу",
@@ -184,7 +219,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Спортивні секції",
                 days = "Пн-Пт",
                 hours = "9:00-19:00",
-                price = "Безкоштовні"
+                price = "Безкоштовні",
+                longitude = 28.45615296740304,
+                latitude = 49.23221061472379
             ),
             WorkshopModel(
                 name = "СДЮСШ з акробатики",
@@ -194,7 +231,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Спортивні секції",
                 days = "Пн-Пт",
                 hours = "9:00-19:00",
-                price = "Безкоштовні"
+                price = "Безкоштовні",
+                longitude = 28.47453762692616,
+                latitude = 49.234700412148364
             ),
             WorkshopModel(
                 name = "Центр Іноземних Мов ASAP",
@@ -204,7 +243,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Вивчення мов",
                 days = "Пн-Нд",
                 hours = "9:00-18:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.44298631160597,
+                latitude = 49.22050185091505
             ),
             WorkshopModel(
                 name = "Школа “WizarD”",
@@ -214,7 +255,9 @@ class WorkshopMockDataSourceImpl: WorkshopRemoteDataSource {
                 interests = "Вивчення мов",
                 days = "Пн-Нд",
                 hours = "9:00-18:00",
-                price = "Більше 100 грн/год"
+                price = "Більше 100 грн/год",
+                longitude = 28.411884228776916,
+                latitude = 49.22299150157598
             ),
         )
     }

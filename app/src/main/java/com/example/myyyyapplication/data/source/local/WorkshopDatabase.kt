@@ -19,12 +19,13 @@ abstract class WorkshopDatabase : RoomDatabase() {
                     context.applicationContext,
                     WorkshopDatabase::class.java,
                     "my_database"
-                ).build()
+                )
+                    .build()
                 INSTANCE = instance
                 instance
             }
         }
+
     }
 
-    
 }
