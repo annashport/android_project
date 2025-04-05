@@ -20,6 +20,7 @@ abstract class WorkshopDatabase : RoomDatabase() {
                     WorkshopDatabase::class.java,
                     "my_database"
                 )
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

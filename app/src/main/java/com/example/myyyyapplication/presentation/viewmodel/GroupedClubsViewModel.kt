@@ -20,18 +20,22 @@ class GroupedClubsViewModel(
     val workshopsLiveData: LiveData<Map<String, List<WorkshopModel>>> = _workshopsLiveData
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            _workshopsLiveData.postValue(
-                workshopRepository.getWorkshops()
-                    .groupBy {
-                        when(groupType) {
-                            GroupType.Days -> it.days
-                            GroupType.Hours -> it.hours
-                            GroupType.Interests -> it.interests
-                            GroupType.Prices -> it.price
-                        }
+        viewModelScope.launch {
+            _workshopsLiveData.value = workshopRepository.getWorkshops()
+                .groupBy {
+                    when(groupType) {
+                        GroupType.Days -> it.days
+                        GroupType.Hours -> it.hours
+                        GroupType.Interests -> it.interests
+                        GroupType.Prices -> it.price
                     }
-            )
+                }
+        }
+    }
+
+    fun updateWorkshop(workshopModel: WorkshopModel) {
+        viewModelScope.launch {
+            workshopRepository.updateWorkshop(workshopModel)
         }
     }
 

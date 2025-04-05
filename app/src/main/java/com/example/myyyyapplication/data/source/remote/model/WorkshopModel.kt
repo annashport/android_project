@@ -1,6 +1,7 @@
 package com.example.myyyyapplication.data.source.remote.model
 
 data class WorkshopModel(
+    val id: Int = 0,
     val name: String,
     val address: String,
     val phone: String,
@@ -11,4 +12,5 @@ data class WorkshopModel(
     val price: String,
     val longitude: Double,
     val latitude: Double,
+    val isLiked: Boolean = false,
 )
