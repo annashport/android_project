@@ -20,6 +20,9 @@ interface WorkshopDao {
     @Query("SELECT (SELECT COUNT(*) FROM my_table) == 0")
     fun isEmpty(): Boolean
 
+    @Query("SELECT * FROM my_table WHERE isLiked = 1")
+    suspend fun getLiked(): List<WorkshopEntity>
+
     @Query("SELECT * FROM my_table")
     suspend fun getAll(): List<WorkshopEntity>
 
