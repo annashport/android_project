@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [WorkshopEntity::class], version = 1)
+@Database(entities = [WorkshopEntity::class], version = 2)
 abstract class WorkshopDatabase : RoomDatabase() {
     abstract fun myDao(): WorkshopDao
 

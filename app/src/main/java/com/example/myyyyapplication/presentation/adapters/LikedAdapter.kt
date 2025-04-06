@@ -22,7 +22,7 @@ class LikedAdapter(
         private val siteTV = item.findViewById<TextView>(R.id.clubWebsiteTextView8)
         private val save = item.findViewById<ImageView>(R.id.saveButton8)
 
-        fun bind(workshop: WorkshopModel, position: Int) {
+        fun bind(workshop: WorkshopModel) {
             nameTV.text = workshop.name
             addressTV.text = workshop.address
             phoneTV.text = workshop.phone
@@ -51,6 +51,6 @@ class LikedAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(workshops[position], position)
+        holder.bind(workshops[position])
     }
 }

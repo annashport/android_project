@@ -61,6 +61,7 @@ class WorkshopRepositoryImpl(
         longitude = this.longitude,
         latitude = this.latitude,
         isLiked = this.isLiked,
+        scheduledHours = this.scheduledHours,
     )
 
     private fun WorkshopEntity.toWorkshopModel() =  WorkshopModel(
@@ -76,5 +77,6 @@ class WorkshopRepositoryImpl(
         longitude = this.longitude,
         latitude = this.latitude,
         isLiked = this.isLiked,
+        scheduledHours = this.scheduledHours,
     )
 }

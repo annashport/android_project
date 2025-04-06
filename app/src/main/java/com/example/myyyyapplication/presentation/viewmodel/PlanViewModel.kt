@@ -16,6 +16,10 @@ class PlanViewModel(
     val likedWorkshopsLiveData: LiveData<List<WorkshopModel>> = _likedWorkshopsLiveData
 
     init {
+        reload()
+    }
+
+    fun reload() {
         viewModelScope.launch {
             _likedWorkshopsLiveData.value = workshopRepository.getLikedWorkshops()
         }

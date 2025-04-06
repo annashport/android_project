@@ -1,6 +1,7 @@
 package com.example.myyyyapplication.data.source.local
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.time.DayOfWeek
 
 @Entity(tableName = "my_table")
 data class WorkshopEntity(
@@ -16,4 +17,5 @@ data class WorkshopEntity(
     val longitude: Double, // Додаємо поле довготи
     val latitude: Double,
     val isLiked: Boolean = false,
+    val scheduledHours: String?=null,
 )
