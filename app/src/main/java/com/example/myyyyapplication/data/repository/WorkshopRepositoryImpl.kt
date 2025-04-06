@@ -12,86 +12,71 @@ class WorkshopRepositoryImpl(
     private val workshopDatabase: WorkshopDao,
 ): WorkshopRepository {
 
-//    override suspend fun getWorkshops(): List<WorkshopModel> {
-//        checkDBandLoad()
-//        return workshopDatabase.getAll()
-//            .map {
-//                WorkshopModel(
-//                    name = it.name,
-//                    address = it.address,
-//                    phone = it.phone,
-//                    website = it.website,
-//                    interests = it.interests,
-//                    days = it.days,
-//                    hours = it.hours,
-//                    price = it.price,
-//                    longitude = it.longitude,
-//                    latitude = it.latitude,
-//                )
-//            }
-//    }
-override suspend fun getWorkshops(): List<WorkshopModel> = withContext(Dispatchers.IO){
-    checkDBandLoad()
-    return@withContext workshopDatabase.getAll()
-        .map {
-            WorkshopModel(
-                name = it.name,
-                address = it.address,
-                phone = it.phone,
-                website = it.website,
-                interests = it.interests,
-                days = it.days,
-                hours = it.hours,
-                price = it.price,
-                longitude = it.longitude,
-                latitude = it.latitude,
-            )
-        }
-}
+    override suspend fun getLikedWorkshops(): List<WorkshopModel> {
+       return withContext(Dispatchers.IO) {
+           checkDBandLoad()
+           return@withContext workshopDatabase.getLiked()
+               .map { it.toWorkshopModel() }
+       }
+    }
 
-    //call before each database request
-//    private suspend fun checkDBandLoad() {
-//        if (workshopDatabase.isEmpty()) {
-//           workshopDatabase.insertAll(
-//               workshopRemoteDataSource.loadWorkshops()
-//                   .map {
-//                       WorkshopEntity(
-//                           name = it.name,
-//                           address = it.address,
-//                           phone =  it.phone,
-//                           website = it.website,
-//                           interests = it.interests,
-//                           days = it.days,
-//                           hours = it.hours,
-//                           price = it.price,
-//                           longitude = it.longitude,
-//                           latitude = it.latitude,
-//                       )
-//                   }
-//           )
-//        }
-//    }
+
+    override suspend fun getWorkshops(): List<WorkshopModel> = withContext(Dispatchers.IO){
+        checkDBandLoad()
+        return@withContext workshopDatabase.getAll()
+            .map {
+               it.toWorkshopModel()
+            }
+    }
+
+    override suspend fun updateWorkshop(workshopModel: WorkshopModel) {
+        withContext(Dispatchers.IO) {
+            workshopDatabase.update(workshopModel.toDbEntity())
+        }
+    }
+
     private suspend fun checkDBandLoad() {
         withContext(Dispatchers.IO){
             if (workshopDatabase.isEmpty()) {
                 workshopDatabase.insertAll(
                     workshopRemoteDataSource.loadWorkshops()
                         .map {
-                            WorkshopEntity(
-                                name = it.name,
-                                address = it.address,
-                                phone =  it.phone,
-                                website = it.website,
-                                interests = it.interests,
-                                days = it.days,
-                                hours = it.hours,
-                                price = it.price,
-                                longitude = it.longitude,
-                                latitude = it.latitude,
-                            )
+                            it.toDbEntity()
                         }
                 )
             }
         }
     }
+
+    private fun WorkshopModel.toDbEntity() =  WorkshopEntity(
+        id = this.id,
+        name = this.name,
+        address = this.address,
+        phone =  this.phone,
+        website = this.website,
+        interests = this.interests,
+        days = this.days,
+        hours = this.hours,
+        price = this.price,
+        longitude = this.longitude,
+        latitude = this.latitude,
+        isLiked = this.isLiked,
+        scheduledHours = this.scheduledHours,
+    )
+
+    private fun WorkshopEntity.toWorkshopModel() =  WorkshopModel(
+        id = this.id,
+        name = this.name,
+        address = this.address,
+        phone = this.phone,
+        website = this.website,
+        interests = this.interests,
+        days = this.days,
+        hours = this.hours,
+        price = this.price,
+        longitude = this.longitude,
+        latitude = this.latitude,
+        isLiked = this.isLiked,
+        scheduledHours = this.scheduledHours,
+    )
 }

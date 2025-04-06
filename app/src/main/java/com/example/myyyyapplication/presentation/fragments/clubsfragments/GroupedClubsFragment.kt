@@ -2,6 +2,7 @@ package com.example.myyyyapplication.presentation.fragments.clubsfragments
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -67,6 +68,24 @@ class GroupedClubsFragment : Fragment() {
 
                     val siteTV = info.findViewById<TextView>(R.id.clubWebsiteTextView8)
                     siteTV.text = workshop.website
+
+                    val save = info.findViewById<ImageView>(R.id.saveButton8)
+                    if (workshop.isLiked) {
+                        save.setImageResource(R.drawable.favorite_saved_foreground)
+                    }
+                    save.setOnClickListener(object : OnClickListener{
+                        private var isLiked = workshop.isLiked
+                        override fun onClick(v: View?) {
+                            isLiked = isLiked.not()
+                            if (isLiked) {
+                                save.setImageResource(R.drawable.favorite_saved_foreground)
+                            } else {
+                                save.setImageResource(R.drawable.favorite_foreground)
+                            }
+                            vm.updateWorkshop(workshop.copy(isLiked = isLiked))
+                        }
+
+                    })
                     container.addView(info)
                 }
                 binding.cardsContainer.addView(cardsRoot)
