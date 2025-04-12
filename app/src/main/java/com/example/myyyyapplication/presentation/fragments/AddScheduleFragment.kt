@@ -81,26 +81,18 @@ class AddScheduleFragment: Fragment() {
 
     private fun initHoursSpinner(hours: String) {
         val range = parseHoursRange(hours)
-        val monthAdapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_item, range)
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.hours.adapter = monthAdapter
-        binding.hours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                dayOfWeek?.let { day ->
-                    val dayToTimePair = day to range[position]
-                    workShop = workShop?.copy(
-                        scheduledTime = workShop?.scheduledTime?.toMutableMap()?.plus(dayToTimePair) ?: mapOf(dayToTimePair),
-                    )
-                }
-
-                binding.btnSave.visibility= View.VISIBLE
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
+        binding.hours.minValue = 0
+        binding.hours.maxValue = range.size - 1
+        binding.hours.displayedValues = range.toTypedArray()
+        binding.hours.setOnValueChangedListener { _, _, position ->
+            dayOfWeek?.let { day ->
+                val dayToTimePair = day to range[position]
+                workShop = workShop?.copy(
+                    scheduledTime = workShop?.scheduledTime?.toMutableMap()?.plus(dayToTimePair) ?: mapOf(dayToTimePair),
+                )
             }
         }
+        binding.btnSave.visibility= View.VISIBLE
         binding.hours.visibility = View.VISIBLE
     }
 
