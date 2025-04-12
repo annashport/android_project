@@ -8,10 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myyyyapplication.R
 import com.example.myyyyapplication.data.source.remote.model.WorkshopModel
+import java.time.DayOfWeek
 
 class ScheduleAdapter(
     private val workshops: MutableList<WorkshopModel>,
-    private val deleteClickListener: (workshop: WorkshopModel) -> Unit
+    private val dayOfWeek: DayOfWeek,
+    private val deleteClickListener: (workshop: WorkshopModel) -> Unit,
 ): RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
     class ViewHolder(item: View, private val deleteClickListener: (workshop: WorkshopModel,pos: Int) -> Unit): RecyclerView.ViewHolder(item) {
@@ -19,11 +21,11 @@ class ScheduleAdapter(
         private val name = item.findViewById<TextView>(R.id.tvName)
         private val delete = item.findViewById<ImageView>(R.id.delete)
 
-        fun bind(workshop: WorkshopModel) {
-            time.text = "${workshop.scheduledHours} |"
+        fun bind(workshop: WorkshopModel, dayOfWeek: DayOfWeek) {
+            time.text = "${workshop.scheduledTime?.get(dayOfWeek)} |"
             name.text = workshop.name
             delete.setOnClickListener {
-                deleteClickListener.invoke(workshop.copy(scheduledHours = null), adapterPosition)
+                deleteClickListener.invoke(workshop.copy(scheduledTime = workshop.scheduledTime?.minus(dayOfWeek)), adapterPosition)
             }
         }
 
@@ -43,6 +45,6 @@ class ScheduleAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(workshops[position])
+        holder.bind(workshops[position], dayOfWeek)
     }
 }

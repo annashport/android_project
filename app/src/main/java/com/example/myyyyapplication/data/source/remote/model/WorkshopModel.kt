@@ -15,7 +15,7 @@ data class WorkshopModel(
     val longitude: Double,
     val latitude: Double,
     val isLiked: Boolean = false,
-    val scheduledHours: String?=null,
+    val scheduledTime: Map<DayOfWeek, String>? = null,
 ) {
     fun getDaysOfWeek(): List<DayOfWeek> {
         return when(days) {

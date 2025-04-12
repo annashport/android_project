@@ -102,9 +102,9 @@ class PlanFragment : Fragment() {
     }
 
     private fun initSchedule(dayOfWeek: DayOfWeek) {
-        vm.likedWorkshopsLiveData.value?.filter { it.getDaysOfWeek().contains(dayOfWeek) && it.scheduledHours != null }?.toMutableList()?.let { scheduleList ->
+        vm.likedWorkshopsLiveData.value?.filter { it.scheduledTime?.keys?.contains(dayOfWeek) ?: false }?.toMutableList()?.let { scheduleList ->
             binding.rvSchedule.layoutManager = LinearLayoutManager(context)
-            binding.rvSchedule.adapter = ScheduleAdapter(scheduleList) {
+            binding.rvSchedule.adapter = ScheduleAdapter(scheduleList, dayOfWeek) {
                 vm.updateWorkshop(it)
             }
         }
