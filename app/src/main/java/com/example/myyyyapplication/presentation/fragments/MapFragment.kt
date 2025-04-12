@@ -3,15 +3,13 @@ package com.example.myyyyapplication.presentation.fragments
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.Fragment
 import com.example.myyyyapplication.R
-import com.example.myyyyapplication.data.source.local.WorkshopDatabase
-import com.example.myyyyapplication.data.source.local.WorkshopEntity
+import com.example.myyyyapplication.presentation.viewmodel.MapViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -20,12 +18,12 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MapFragment : Fragment(), OnMapReadyCallback {
+
+    private val vm: MapViewModel by viewModel()
 
     private lateinit var mMap: GoogleMap
     private lateinit var mapView: MapView
@@ -55,7 +53,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val vinnytsia = LatLng(49.2331, 28.4682) // Координати Вінниці
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(vinnytsia, 12f))
 
-        loadWorkshopsAndAddMarkers()
+        subscribeToWorkshopsAndAddMarkers()
     }
     private fun getBitmapDescriptor(resourceId: Int): BitmapDescriptor {
         val drawable = ContextCompat.getDrawable(requireContext(), resourceId) ?: return BitmapDescriptorFactory.defaultMarker()
@@ -66,24 +64,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
-    private fun loadWorkshopsAndAddMarkers() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            val workshopDao = WorkshopDatabase.getDatabase(requireContext()).myDao()
-            val workshops: List<WorkshopEntity> = workshopDao.getAll()
-
-            withContext(Dispatchers.Main) {
-                val icon = getBitmapDescriptor(R.drawable.custom_marker3_foreground)
-
-                workshops.forEach { workshop ->
-                    val location = LatLng(workshop.latitude, workshop.longitude)
-                    mMap.addMarker(
-                        MarkerOptions()
-                            .position(location)
-                            .title(workshop.name)
-                            .snippet(workshop.address)
-                            .icon(icon)
-                    )
-                }
+    private fun subscribeToWorkshopsAndAddMarkers() {
+        vm.workshopsLiveData.observe(viewLifecycleOwner) {
+            val icon = getBitmapDescriptor(R.drawable.custom_marker3_foreground)
+            it.forEach { workshop ->
+                val location = LatLng(workshop.latitude, workshop.longitude)
+                mMap.addMarker(
+                    MarkerOptions()
+                        .position(location)
+                        .title(workshop.name)
+                        .snippet(workshop.address)
+                        .icon(icon)
+                )
             }
         }
     }

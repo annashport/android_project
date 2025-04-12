@@ -8,6 +8,7 @@ import com.example.myyyyapplication.data.source.remote.WorkshopMockDataSourceImp
 import com.example.myyyyapplication.data.source.remote.WorkshopRemoteDataSource
 import com.example.myyyyapplication.presentation.GroupType
 import com.example.myyyyapplication.presentation.viewmodel.GroupedClubsViewModel
+import com.example.myyyyapplication.presentation.viewmodel.MapViewModel
 import com.example.myyyyapplication.presentation.viewmodel.PlanViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -41,5 +42,6 @@ class MyApplication: Application() {
         factory<WorkshopRepository> { WorkshopRepositoryImpl(get(), get()) }
         viewModel { params -> GroupedClubsViewModel(params.get(), get()) }
         viewModel { PlanViewModel(get()) }
+        viewModel { MapViewModel(get()) }
     }
 }
