@@ -17,5 +17,5 @@ data class WorkshopEntity(
     val longitude: Double, // Додаємо поле довготи
     val latitude: Double,
     val isLiked: Boolean = false,
-    val scheduledHours: String?=null,
+    val scheduledTime: Map<Int, String>? = null,
 )

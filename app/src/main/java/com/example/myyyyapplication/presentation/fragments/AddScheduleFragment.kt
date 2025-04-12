@@ -22,6 +22,7 @@ class AddScheduleFragment: Fragment() {
     private val vm: PlanViewModel by viewModel()
 
     private var workShop: WorkshopModel? = null
+    private var dayOfWeek: DayOfWeek? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +34,7 @@ class AddScheduleFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dayOfWeek = arguments?.getInt(DAY_OF_WEEK_ARGUMENT)?.let { DayOfWeek.of(it) }
         binding.ivClose.setOnClickListener { activity?.onBackPressed() }
         binding.btnChoose.setOnClickListener {
             binding.spinner.visibility = View.VISIBLE
@@ -50,9 +52,10 @@ class AddScheduleFragment: Fragment() {
 
     private fun initSpinner(likedItems: List<WorkshopModel>) {
         val items = likedItems
-            .filter { workShop -> arguments?.getInt(DAY_OF_WEEK_ARGUMENT)?.let {
-                workShop.getDaysOfWeek().contains(DayOfWeek.of(it))
-            } ?: false
+            .filter { workShop ->
+                dayOfWeek.let {
+                    workShop.getDaysOfWeek().contains(it)
+                }
             }
 
         val monthAdapter = ArrayAdapter(
@@ -83,7 +86,13 @@ class AddScheduleFragment: Fragment() {
         binding.hours.adapter = monthAdapter
         binding.hours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                workShop = workShop?.copy(scheduledHours = range.get(position))
+                dayOfWeek?.let { day ->
+                    val dayToTimePair = day to range[position]
+                    workShop = workShop?.copy(
+                        scheduledTime = workShop?.scheduledTime?.toMutableMap()?.plus(dayToTimePair) ?: mapOf(dayToTimePair),
+                    )
+                }
+
                 binding.btnSave.visibility= View.VISIBLE
 
             }

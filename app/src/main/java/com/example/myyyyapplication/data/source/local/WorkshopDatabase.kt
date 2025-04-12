@@ -3,8 +3,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
-@Database(entities = [WorkshopEntity::class], version = 2)
+@Database(entities = [WorkshopEntity::class], version = 3)
+@TypeConverters(WorkshopTimeConverter::class)
 abstract class WorkshopDatabase : RoomDatabase() {
     abstract fun myDao(): WorkshopDao
 
@@ -20,6 +22,7 @@ abstract class WorkshopDatabase : RoomDatabase() {
                     WorkshopDatabase::class.java,
                     "my_database"
                 )
+                    .addTypeConverter(WorkshopTimeConverter())
                     .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance

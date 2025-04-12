@@ -6,6 +6,7 @@ import com.example.myyyyapplication.data.source.remote.WorkshopRemoteDataSource
 import com.example.myyyyapplication.data.source.remote.model.WorkshopModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.time.DayOfWeek
 
 class WorkshopRepositoryImpl(
     private val workshopRemoteDataSource: WorkshopRemoteDataSource,
@@ -61,7 +62,7 @@ class WorkshopRepositoryImpl(
         longitude = this.longitude,
         latitude = this.latitude,
         isLiked = this.isLiked,
-        scheduledHours = this.scheduledHours,
+        scheduledTime = this.scheduledTime?.map { it.key.value to it.value }?.toMap(),
     )
 
     private fun WorkshopEntity.toWorkshopModel() =  WorkshopModel(
@@ -77,6 +78,6 @@ class WorkshopRepositoryImpl(
         longitude = this.longitude,
         latitude = this.latitude,
         isLiked = this.isLiked,
-        scheduledHours = this.scheduledHours,
+        scheduledTime = this.scheduledTime?.map { DayOfWeek.of(it.key) to it.value }?.toMap(),
     )
 }

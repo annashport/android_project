@@ -30,7 +30,7 @@ class LikedAdapter(
             if (workshop.isLiked) {
                 save.setImageResource(R.drawable.favorite_saved_foreground)
                 save.setOnClickListener{
-                    onUnlikedClickListener.invoke(workshop.copy(isLiked = false), adapterPosition)
+                    onUnlikedClickListener.invoke(workshop.copy(isLiked = false, scheduledTime = null), adapterPosition)
                 }
             }
         }
